@@ -3,9 +3,9 @@ package com.orange.bank.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.orange.bank.entities.Client;
+import com.orange.bank.entities.Account;
 
-public class ClientDTO implements Serializable {
+public class AccountDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
@@ -14,10 +14,10 @@ public class ClientDTO implements Serializable {
 	private String cpf;
 	private Instant birthDate;
 	
-	public ClientDTO() {
+	public AccountDTO() {
 	}
 	
-	public ClientDTO(Long id, String name, String email, String cpf, Instant birthDate) {
+	public AccountDTO(Long id, String name, String email, String cpf, Instant birthDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,7 +26,7 @@ public class ClientDTO implements Serializable {
 		this.birthDate = birthDate;
 	}
 	
-	public ClientDTO(Client entity) {
+	public AccountDTO(Account entity) {
 		id = entity.getId();
 		name = entity.getName();
 	    email = entity.getEmail();
