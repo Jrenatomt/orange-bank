@@ -3,15 +3,31 @@ package com.orange.bank.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.orange.bank.entities.Account;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
 
+import org.hibernate.validator.constraints.br.CPF;
+
+import com.orange.bank.entities.Account;
+import com.orange.bank.services.validation.AccountInsertValid;
+
+@AccountInsertValid
 public class AccountDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotEmpty(message = "campo obrigatório")
 	private String name;
+	
+	@Email(message = "entre com um email válido")
 	private String email;
+	
+	@CPF(message = "entre com um CPF válido")
 	private String cpf;
+	
+	@PastOrPresent(message = "a data não pode ser do futuro")
 	private Instant birthDate;
 	
 	public AccountDTO() {

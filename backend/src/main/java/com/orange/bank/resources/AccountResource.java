@@ -2,6 +2,8 @@ package com.orange.bank.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,13 +17,13 @@ import com.orange.bank.services.AccountService;
 
 @RestController
 @RequestMapping(value = "/accounts")
-public class ClientResource {
+public class AccountResource {
 	
 	@Autowired
 	private AccountService service;
 	
 	@PostMapping
-	public ResponseEntity<AccountDTO> insert(@RequestBody AccountDTO dto) {
+	public ResponseEntity<AccountDTO> insert(@Valid @RequestBody AccountDTO dto) {
 		AccountDTO newDto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(newDto.getId()).toUri();
